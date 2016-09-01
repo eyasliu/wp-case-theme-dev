@@ -1,0 +1,47 @@
+.viewContainer{
+	max-width: 1423px;
+	margin: 0 auto;
+}
+.item{
+	text-align: center;
+	.inner{
+		margin:1em 0.5em;
+	}
+	.title{
+		text-align: center;
+		font-size: 55px;
+		line-height: normal;
+	}
+	.thumb{
+		padding: 23px 0;
+		img{
+			// float: left;
+			width: 100%;
+			max-width: 100%;
+			height: auto;
+		}
+	}
+	.images{
+		text-align: center;
+		img{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 15px;
+		}
+	}
+}
+.content{
+	text-align: left;
+	margin: 0;
+	padding: 66px;
+	img{
+		padding: 23px 0;
+	}
+}
+
+@media screen and (max-width: 1024px){
+	.content{
+		padding: 23px;
+	}
+}
