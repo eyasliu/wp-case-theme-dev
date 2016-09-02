@@ -4,14 +4,14 @@ export default class Footer extends React.Component{
 	render(){
 		return (
 			<footer className="footer">
-				<div className="share">
+				{/*<div className="share">
 					<ul>
 						<li>baidu</li>
 						<li>baidu</li>
 						<li>baidu</li>
 						<li>baidu</li>
 					</ul>
-				</div>
+				</div>*/}
 				<div className="description">
 					<p>THE AWWWARDS THAT RECOGNIZE THE TALENT AND EFFORT OF THE BEST WEB DESIGNERS IN THE WORLD.</p>
 				</div>

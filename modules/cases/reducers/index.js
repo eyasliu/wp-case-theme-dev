@@ -6,6 +6,7 @@ const list = Reducer({
 	[C.of('GetList')]: (state, action) => ({
 		...state,
 		values: [
+			...state.values,
 			...action.list
 		]
 	})

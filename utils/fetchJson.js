@@ -8,8 +8,16 @@
 export default (url, options = {}) => {
 	let fetchUrl = url;
 	if(options.query){
-		fetchUrl = new URL(url, url.indexOf('http') === 0 ? undefined : window.location.origin)
-		Object.keys(options.query).forEach(key => (options.query[key] != undefined) && fetchUrl.searchParams.append(key, options.query[key]))
+		let queryString = []
+		
+		Object.keys(options.query).forEach(key => {
+			if(options.query[key] != undefined){
+				queryString.push(key+'='+options.query[key])
+			}
+		})
+
+		fetchUrl = fetchUrl + (fetchUrl.indexOf('?') > -1 ? '' : '?') + queryString.join('&')
+
 		delete options.query
 	}
 	return fetch(fetchUrl, {

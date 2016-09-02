@@ -9,24 +9,26 @@ const parseCase = viewdata => {
 }
 
 export const getList = (page = 1) => {
-	console.log(page)
-	return async dispatch => {
-		try{
-			const list = await fetchJson(config.server + '/case', {query: {page, per_page: 12}})
+	return dispatch => {
+		fetchJson(config.server + '/case', {query: {page, per_page: 12}})
+		.then(list => {
 			dispatch({
 				type: C.GetList,
 				list: _.map(list, parseCase)
 			})
-		} catch(e) {}
+		})
 	}
 }
 
 export function getView(id){
-	return async dispatch => {
-		var data = await fetchJson(config.server + '/case/' + id)
-		dispatch({
-			type: C.GetView,
-			data: parseCase(data)
+	return dispatch => {
+		fetchJson(config.server + '/case/' + id)
+		.then(data => {
+			dispatch({
+				type: C.GetView,
+				data: parseCase(data)
+			})
+			
 		})
 	}
 }
