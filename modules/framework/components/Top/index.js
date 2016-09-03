@@ -1,28 +1,30 @@
-
+@connect(
+	state => ({
+		data: state.menu.main
+	})
+)
 
 export default class Top extends React.Component{
+	constructor(props){
+		super();
+	}
+
+	static defaultProps = {
+		bgImg: 'http://static.bootcss.com/expo/img/d/dd/2de797545de56274f03a5920eb3a1.jpg'
+	}
 	render(){
+		const {data} = this.props;
 		return (
-			<div id="header">
-				<nav className="main">
-				    <div className="logo">
-				        <strong><a href="/" title="Best websites around the World">Eyas</a></strong>
-				    </div>
-				    <ul className="menu right">
-				        <li><Link to="/">首页</Link></li>
-				        <li className="active"><Link to="/">项目</Link></li>
-				        <li><Link to="/">作品</Link></li>
-				        <li><Link to="/">博客</Link></li>
-				        <li><Link to="/">关于</Link></li>
-				        <li><Link to="/">展示</Link></li>
-				        <li className="submit">
-				            <Link to="/">提交</Link>
-				        </li>
-				        <li className="search">
-				            <span className="bt-search">搜索</span>
-				        </li>
-				    </ul>
-				</nav>
+			<div id="header" style={{backgroundImage: 'url(' + this.props.bgImg + ')'}}>
+				<div className="logotext">
+					<h1><Link to="/">案例展示</Link></h1>
+					<h2>Eyas</h2>
+				</div>
+				<div className="logoimg">
+			    <Link to="/cases">
+			    	<img src="http://image.youzhan.org/e/35/22ccaf4c24ef690f7767e6a3ba5f0.png" width="78" />
+			    </Link>
+			  </div>
 			</div>
 		)
 	}

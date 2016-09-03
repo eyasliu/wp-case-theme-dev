@@ -1,9 +1,15 @@
 const C = Constant('cases');
 
+const parseContent = c => {
+	if(!c) return '';
+	return c.replace(/[\<p\>\<br(\ )(\/)\>]/g, '').replace(/\<\/p\>/g, '\n')
+}
+
 const parseCase = viewdata => {
 	viewdata.thumb = viewdata.thumb.guid;
 	viewdata.title = viewdata.title.rendered;
-	viewdata.images = viewdata.images.map(item => item.guid);
+	viewdata.content = viewdata.content.rendered;
+	viewdata.images = viewdata.images ? viewdata.images.map(item => item.guid) : [];
 	viewdata.guid = viewdata.guid.rendered;
 	return viewdata;
 }

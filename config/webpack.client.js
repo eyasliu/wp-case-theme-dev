@@ -8,7 +8,7 @@ const config = {
 		app: './index.js'
 	},
 	output: {
-		path: join('../build/client'),
+		path: join('./assets'),
 		filename: '[name].js',
 		chunkFilename: '[name].[chunkhash:5].chunk.js',
 		publicPath: '/assets/'
@@ -28,7 +28,7 @@ const config = {
 	  }
 	},
 	module: {
-		noParse: [join('../node_modules/locash/locash.js')],
+		noParse: [join('../node_modules/lodash/lodash.js')],
 		loaders: [
 			{
 			  test: /\.(js|jsx)$/,

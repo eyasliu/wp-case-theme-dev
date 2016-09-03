@@ -11,13 +11,12 @@
 		text-align: center;
 		font-size: 55px;
 		line-height: normal;
+		margin-top: 25px;
 	}
 	.thumb{
 		padding: 23px 0;
 		text-align: center;
 		img{
-			// float: left;
-			// width: 100%;
 			max-width: 100%;
 			height: auto;
 		}
@@ -36,6 +35,7 @@
 	text-align: left;
 	margin: 0;
 	padding: 66px;
+  white-space: pre-wrap;
 	img{
 		padding: 23px 0;
 	}

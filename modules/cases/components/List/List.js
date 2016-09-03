@@ -1,6 +1,7 @@
 import Item from './Item';
 import style from './style.scss';
 import {getList} from 'cases/actions/list';
+import Loading from 'common/components/Loading';
 
 @connect(
 	state => ({
@@ -11,14 +12,30 @@ export default class ListItems extends React.Component{
 	constructor(props){
 		super();
 		props.dispatch(getList())
+		this.state = {
+			loading: true
+		}
 	}
+
+	componentWillReceiveProps(nextProps){
+		if(nextProps.list.length !== this.props.list.length){
+			this.setState({
+				loading: false
+			})
+		}
+	}
+
 	render(){
 		return (
 			<div className={style.list}>
 				<div className={style.items}>
-					{this.props.list.map(item => <Item key={item.id} data={item} />)}
+					{this.props.list.map(item => <Item key={item.id + uuid()} data={item} />)}
 				</div>
-				<PageNav total={13} limit={12} onChange={paged => {
+				{this.state.loading ? <Loading /> : ''}
+				<PageNav total={window.dict.case_count.publish} limit={12} onChange={paged => {
+					this.setState({
+						loading: true
+					})
 					this.props.dispatch(getList(paged))
 				}} />
 			</div>
@@ -46,7 +63,7 @@ class PageNav extends Component{
 	}
 
 	gotoPage(paged){
-		// if(paged < this.state.current) return;
+		if(paged < this.state.current) return;
 		this.setState({
 			current: paged
 		})

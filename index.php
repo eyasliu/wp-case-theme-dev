@@ -8,7 +8,8 @@
 	<div id="root"></div>
 	<script>
 		var serverConfig = {
-			server: '<?php echo home_url(); ?>/wp-json/wp/v2'
+			server: '<?php echo home_url(); ?>/wp-json/wp/v2',
+			home: '<?php echo home_url(); ?>'
 		}
 	</script>
 	<script src="http://localhost:3000/assets/app.js"></script>

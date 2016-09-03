@@ -1,12 +1,14 @@
 import gulp from 'gulp';
 import webpack from 'webpack';
+import {exec} from 'child_process';
+import path from 'path';
 import WebpackDevServer from 'webpack-dev-server';
 import config from './config';
 
 const {client: clientConfig} = config
 
 gulp.task('dev', ['dev:client'])
-console.log(config)
+
 gulp.task('dev:client', () => {
   const compiler = webpack(clientConfig.webpack);
   
@@ -41,6 +43,18 @@ gulp.task('build', () => {
 			chunks: false,
 			colors: true
 		}))
+    deploy(path.join(__dirname, '../cases/'))
 	})
 })
 
+function deploy(path){
+  exec(`cp *.php ${path}`, () => {
+    console.log('php success')
+    exec(`cp style.css ${path}`, () => {
+      console.log('style.css success!')
+      exec(`cp assets ${path}`, () => {
+        console.log('assets success!')
+      })
+    })
+  })
+}

@@ -2,6 +2,7 @@ import 'babel-polyfill';
 import {render} from 'react-dom';
 import 'common/style';
 import './utils/globals';
+import beforeRender from './utils/beforeRender';
 import APP from 'fw';
 
 if(process.env.NODE_ENV == 'development'){
@@ -10,4 +11,7 @@ if(process.env.NODE_ENV == 'development'){
 	__webpack_public_path__ = serverConfig.assetPath
 }
 
-render(APP, document.getElementById('root'))
+beforeRender()
+.then(() => {
+	render(APP, document.getElementById('root'))
+})

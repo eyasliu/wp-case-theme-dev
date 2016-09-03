@@ -4,6 +4,7 @@ import View from './components/View';
 
 export default (
 	<Route path="/cases" component={App}>
+		<Route path="tag/:tagid" component={List}></Route>
 		<Route path="list" component={List}></Route>
 		<Route path=":id" component={View}></Route>
 		<IndexRoute component={List}></IndexRoute>
